@@ -1,23 +1,26 @@
 import React from "react";
+import { Card,Button } from 'antd';
+import { useNavigate } from "react-router-dom";
 
-function Card(props){
-  console.log("props");
+const { Meta } = Card;
+
+function CardLayout({productdata}){
+  console.log(productdata.image);
+  let navigate =useNavigate();
     return(
-      <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src={props.img}/>
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">{props.title}<i class="material-icons right">more_vert</i></span>
-        <p><a href="#">View Product</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">{props.title}<i class="material-icons right">close</i></span>
-        <p>{props.description.slice(0,40)+'...'}</p>
-      </div>
-    </div>
+      <Card
+        hoverable
+        style={{ width: 240 }}
+        cover={<img alt="example" src={productdata.image} height='200px' weight='200px' />}
+      >
+        <Meta title={productdata.title} description={productdata.description.slice(0,20)+'...'} />
+        <Button type="primary" block onClick={()=>{localStorage.setItem('view_product',JSON.stringify(productdata));navigate('/product')}}>
+          View Product
+        </Button>
+      </Card>
+      
       
                 
     );
 }
-export default Card;
+export default CardLayout;
