@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../index.css"
 import CardLayout from "../components/card";
 import axios from 'axios';
-import { Card } from 'antd';
+import { Card,Row,Col } from 'antd';
 
 const gridStyle = {
   width: '25%',
@@ -21,9 +21,11 @@ function Home () {
   return (
   <div>
     
-    <Card title="Products">
-    {product?.map((prod)=><Card.Grid style={gridStyle}><CardLayout productdata={prod}/></Card.Grid>)}
-  </Card>
+    
+  <Row justify="space-around">
+    {product?.map((prod)=><Col span={6}><CardLayout productdata={prod}/></Col>)}
+      
+    </Row>
   </div>
 );
 }

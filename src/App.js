@@ -4,19 +4,20 @@ import Checkout from "./pages/checkout";
 import Product from "./pages/productpage";
 import Notfound from "./pages/notfound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
 
 const App = () => {
   
-
+  const [cart, setCart] = useState([]);
   
-
+useEffect(()=>{
+    console.log(cart);
+},[cart]);
   return(
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<Home />}/>
-            <Route path="/product" element={<Product/>}/>
-            <Route path="/checkout" element={<Checkout/>}/>
+            <Route path="/product" element={<Product setCart={setCart}/>}/>
+            <Route path="/checkout" element={<Checkout cart={cart}/>}/>
             <Route path="*" element={<Notfound />} />
         </Routes>
     </BrowserRouter>

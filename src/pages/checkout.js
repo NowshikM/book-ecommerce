@@ -1,4 +1,4 @@
-function Checkout(){
+function Checkout({cart}){
     return(
 <div>Checkout</div>
     );
