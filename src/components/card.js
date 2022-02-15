@@ -1,21 +1,21 @@
 import React from "react";
 
-function Card(title,description){
+function Card(props){
   console.log("props");
     return(
-        <div className="row">
-        <div className="col s12 m6">
-          <div className="card">
-            <div className="card-image">
-              <span >{title}</span>
-              <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
-            </div>
-            <div className="card-content">
-              <p>{description}ppp</p>
-            </div>
-          </div>
-        </div>
-        </div>
+      <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src={props.img}/>
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">{props.title}<i class="material-icons right">more_vert</i></span>
+        <p><a href="#">View Product</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{props.title}<i class="material-icons right">close</i></span>
+        <p>{props.description.slice(0,40)+'...'}</p>
+      </div>
+    </div>
       
                 
     );
