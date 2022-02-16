@@ -1,11 +1,14 @@
 import { Button, Card, Row, Col } from 'antd';
-
-
 import React from 'react';
+import { useParams } from "react-router-dom";
 
-function Product({setCart}){
-    let data=JSON.parse(localStorage.getItem('view_product'));
-    
+
+function Product({product, setCart}){
+    let params = useParams();
+    let productid = params.productid;
+    console.log(product);
+    let data = product.filter((prod)=>prod.id==productid);
+    data=data[0];
     return(
 
         <div className="site-card-wrapper">

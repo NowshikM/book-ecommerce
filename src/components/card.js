@@ -14,7 +14,7 @@ function CardLayout({productdata}){
         cover={<img alt="example" src={productdata.image} height='200px' weight='200px' />}
       >
         <Meta title={productdata.title} description={productdata.description.slice(0,50)+'...'} />
-        <Button type="primary" block onClick={()=>{localStorage.setItem('view_product',JSON.stringify(productdata));navigate('/product')}}>
+        <Button type="primary" block onClick={()=>{navigate('/product/'+productdata.id)}}>
           View Product
         </Button>
       </Card>

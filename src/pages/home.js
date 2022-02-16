@@ -2,27 +2,23 @@ import React, { useState, useEffect } from "react";
 import "../index.css"
 import CardLayout from "../components/card";
 import axios from 'axios';
-import { Card,Row,Col } from 'antd';
+import { Button,Card,Row,Col } from 'antd';
+import { useNavigate } from "react-router-dom";
 
 const gridStyle = {
   width: '25%',
   textAlign: 'center',
 };
-function Home () {
-  const [product, setProduct] =useState([]);
-
-  useEffect(()=>{
-    axios.get('https://fakestoreapi.com/products').then(resp => {
-      console.log(resp.data)
-    setProduct([...resp.data]);
-  });
-  },[]);
+function Home ({product}) {
+  let navigate = useNavigate();
+  
   
   return (
   <div>
     
     
   <Row justify="space-around">
+    <Button onClick={()=>{navigate('/checkout')}}>View Cart</Button><br/>
     {product?.map((prod)=><Col span={6}><CardLayout productdata={prod}/></Col>)}
       
     </Row>
